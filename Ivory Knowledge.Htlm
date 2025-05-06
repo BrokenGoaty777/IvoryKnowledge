@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IvoryKnowledge.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .chatbox {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .response {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e9ffe9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page de connexion -->
+    <div id="login-page" class="container">
+        <h1>IvoryKnowledge - Connexion</h1>
+        <form id="login-form" onsubmit="event.preventDefault(); showMainPage();">
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+            
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" required>
+            
+            <label for="system">Choisissez votre système éducatif :</label>
+            <select id="system" name="system">
+                <option value="francais">Système Français</option>
+                <option value="ivoirien">Système Ivoirien</option>
+                <option value="cambridge">Système Cambridge</option>
+                <option value="ib">Système IB</option>
+            </select>
+            
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+
+    <!-- Page principale avec IA Denma -->
+    <div id="main-page" class="container" style="display:none;">
+        <h1>Bienvenue sur IvoryKnowledge</h1>
+        <h3>IA Denma à votre service !</h3>
+        
+        <div class="chatbox">
+            <p><strong>Denma :</strong> Bonjour, comment puis-je vous aider aujourd'hui ?</p>
+            <div class="response" id="response"></div>
+            <input type="text" id="user-input" placeholder="Posez votre question...">
+            <button onclick="getResponse()">Envoyer</button>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour afficher la page principale après la connexion
+        function showMainPage() {
+            // Cacher la page de connexion
+            document.getElementById('login-page').style.display = 'none';
+            
+            // Afficher la page principale
+            document.getElementById('main-page').style.display = 'block';
+        }
+
+        // Fonction pour générer une réponse de l'IA
+        function getResponse() {
+            var userInput = document.getElementById("user-input").value;
+            var responseDiv = document.getElementById("response");
+
+            // Simulation d'une réponse en fonction de l'input de l'utilisateur
+            if(userInput.includes("democratie")) {
+                responseDiv.innerHTML = "<strong>Denma :</strong> La démocratie, dans le programme de 3ème, se réfère à un système politique où les citoyens exercent leur pouvoir par le biais d'élections régulières.";
+            } else if(userInput.includes("mitose")) {
+                responseDiv.innerHTML = "<strong>Denma :</strong> La mitose est le processus de division cellulaire où une cellule mère se divise pour former deux cellules filles identiques, alors que la méiose donne des cellules filles avec moitié de chromosomes.";
+            } else {
+                responseDiv.innerHTML = "<strong>Denma :</strong> Désolé, je n'ai pas d'information sur cette question. Essayez une autre.";
+            }
+        }
+    </script>
+
+</body>
+</html>
